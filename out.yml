@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: An AWS Lambda application that calls the Lambda API.
+Resources:
+  function:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://lambda-artifacts-958696af183d8e98/36d3d25f676274ca78fb27fcb3550e35
+      Handler: org.sanjida.matillion.job.MatillionJobRunner
+      Runtime: java11
+      Description: Java function
+      MemorySize: 512
+      Timeout: 10
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - AWSLambda_ReadOnlyAccess
+      - AWSXrayWriteOnlyAccess
+      - AWSLambdaVPCAccessExecutionRole
+      Tracing: Active
